@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Painel · Cadastros ICOM Influência</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080b16;--bg2:#0b1120;--card:#0f1728;--card2:#131d33;--line:#1e2b47;--txt:#eef2fb;--mut:#93a3c4;--blue:#2f6bff;--red:#ff3547;--green:#2ecc8f;--amber:#f2b13c}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-serif;line-height:1.45}
+  .wrap{max-width:1120px;margin:0 auto;padding:22px 16px 70px}
+  a{color:var(--blue)}
+  button{cursor:pointer;border:0;font-family:inherit;font-weight:600}
+  input,select{font-family:inherit}
+  /* login */
+  .login{max-width:370px;margin:13vh auto;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .login .brand{font-weight:800;font-size:1.15rem;margin-bottom:4px}
+  .login .brand b{color:var(--blue)}
+  .login p{color:var(--mut);font-size:.88rem;margin-bottom:18px}
+  .login input{width:100%;padding:13px 14px;border-radius:11px;border:1px solid var(--line);background:var(--card2);color:var(--txt);font-size:1rem;margin-bottom:12px}
+  .btn{padding:12px 18px;border-radius:11px;background:var(--blue);color:#fff;font-size:.95rem}
+  .btn.block{width:100%}
+  .btn.sec{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+  .btn.red{background:var(--red)}
+  .err{color:var(--red);font-size:.85rem;min-height:18px;margin-top:6px}
+  /* app */
+  .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+  .top h1{font-size:1.3rem} .top .sub{color:var(--mut);font-size:.84rem;margin-top:2px}
+  .top .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .kpi .n{font-size:1.8rem;font-weight:800;line-height:1} .kpi.b .n{color:var(--blue)} .kpi.g .n{color:var(--green)}
+  .kpi .l{color:var(--mut);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;margin-top:7px}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .panel h2{font-size:.95rem;margin-bottom:14px;color:var(--txt)}
+  .bar{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:.86rem}
+  .bar .bl{flex:0 0 118px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .bar .bt{flex:1;height:18px;background:var(--card2);border-radius:6px;overflow:hidden} .bar .bf{height:100%;background:var(--blue);border-radius:6px} .bar .bn{flex:0 0 62px;text-align:right;color:var(--mut);font-variant-numeric:tabular-nums}
+  .toolbar{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+  .toolbar input{flex:1;min-width:200px;padding:11px 14px;border-radius:11px;border:1px solid var(--line);background:var(--card);color:var(--txt);font-size:.95rem}
+  .tbl-wrap{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:auto}
+  table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:760px}
+  th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);white-space:nowrap}
+  th{color:var(--mut);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;position:sticky;top:0;background:var(--card)}
+  tbody tr:hover{background:var(--card2)}
+  td a{color:var(--blue)}
+  .pill{font-size:.72rem;padding:2px 9px;border-radius:99px;background:var(--card2);color:var(--txt)}
+  .muted{color:var(--mut)}
+  @media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="login" class="login">
+  <div class="brand"><b>ICOM</b> · Influência</div>
+  <p>Painel de cadastros — acesso restrito.</p>
+  <input type="password" id="pw" placeholder="Senha do painel" autocomplete="current-password">
+  <button class="btn block" id="enter">Entrar</button>
+  <div class="err" id="err"></div>
+</div>
+
+<div id="app" class="wrap" style="display:none">
+  <div class="top">
+    <div><h1>Cadastros · ICOM Influência</h1><div class="sub" id="sub"></div></div>
+    <div class="actions">
+      <button class="btn sec" id="csv">Exportar CSV</button>
+      <button class="btn sec" id="reload">Atualizar</button>
+      <button class="btn sec" id="logout">Sair</button>
+    </div>
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="cols">
+    <div class="panel"><h2>Por nicho</h2><div id="byNicho"></div></div>
+    <div class="panel"><h2>Por faixa de seguidores</h2><div id="bySeg"></div></div>
+  </div>
+
+  <div class="toolbar">
+    <input id="q" placeholder="Buscar por nome, @, e-mail ou cidade...">
+    <span class="muted" id="count"></span>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Nome</th><th>E-mail</th><th>Instagram</th><th>Cidade</th><th>Nicho</th><th>Seguidores</th><th>Data</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  var SUPA_URL = "https://swsfwthjxtqtkloexyjs.supabase.co";
+  var SUPA_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN3c2Z3dGhqeHRxdGtsb2V4eWpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNzkxOTMsImV4cCI6MjA5Mzc1NTE5M30.09EL5hjdfzK-THVcnakg1nCSAeDMC99gSNUCumku3_4";
+  var DATA = [];
+  function $(id){return document.getElementById(id);}
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  function pct(n,t){return t?Math.round(n/t*100):0;}
+
+  $("enter").addEventListener("click",go);
+  $("pw").addEventListener("keydown",function(e){if(e.key==="Enter")go();});
+  $("logout").addEventListener("click",function(){location.reload();});
+  $("reload").addEventListener("click",function(){load($("pw").value);});
+  $("q").addEventListener("input",renderTable);
+  $("csv").addEventListener("click",exportCsv);
+  function go(){load($("pw").value);}
+
+  function load(pw){
+    $("err").textContent="";
+    if(!pw){$("err").textContent="Digite a senha.";return;}
+    $("enter").textContent="Entrando...";
+    fetch(SUPA_URL+"/rest/v1/rpc/icom_influencia_metrics",{method:"POST",headers:{"Content-Type":"application/json","apikey":SUPA_ANON,"Authorization":"Bearer "+SUPA_ANON},body:JSON.stringify({p_password:pw})})
+      .then(function(r){return r.json();})
+      .then(function(rows){
+        $("enter").textContent="Entrar";
+        if(!Array.isArray(rows)){$("err").textContent="Erro ao consultar.";return;}
+        if(rows.length===0){$("err").textContent="Senha incorreta ou ainda sem cadastros.";return;}
+        // ignora linhas de teste (validacao do pipeline)
+        DATA = rows.filter(function(r){ var ua=(r.user_agent||""); return ua.indexOf("pipeline-")!==0 && ua.indexOf("form-sim")!==0; });
+        render();
+      }).catch(function(){$("enter").textContent="Entrar";$("err").textContent="Falha de conexão.";});
+  }
+
+  function render(){
+    $("login").style.display="none"; $("app").style.display="block";
+    var now=new Date(), d0=new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime(), w7=now.getTime()-7*864e5;
+    var hoje=0, sem=0, nichos={}, segs={};
+    DATA.forEach(function(r){
+      var t=new Date(r.created_at).getTime();
+      if(t>=d0) hoje++; if(t>=w7) sem++;
+      if(r.nicho) nichos[r.nicho]=(nichos[r.nicho]||0)+1;
+      if(r.seguidores) segs[r.seguidores]=(segs[r.seguidores]||0)+1;
+    });
+    $("sub").textContent="atualizado agora";
+    $("kpis").innerHTML=
+      '<div class="kpi b"><div class="n">'+DATA.length+'</div><div class="l">Total de cadastros</div></div>'+
+      '<div class="kpi g"><div class="n">'+hoje+'</div><div class="l">Hoje</div></div>'+
+      '<div class="kpi"><div class="n">'+sem+'</div><div class="l">Últimos 7 dias</div></div>'+
+      '<div class="kpi"><div class="n">'+Object.keys(nichos).length+'</div><div class="l">Nichos diferentes</div></div>';
+    $("byNicho").innerHTML=bars(nichos); $("bySeg").innerHTML=bars(segs);
+    renderTable();
+  }
+  function bars(map){
+    var e=Object.keys(map).map(function(k){return [k,map[k]];}).sort(function(a,b){return b[1]-a[1];});
+    var tot=e.reduce(function(s,x){return s+x[1];},0);
+    if(!e.length) return '<div class="muted">Sem dados.</div>';
+    return e.map(function(x){return '<div class="bar"><div class="bl">'+esc(x[0])+'</div><div class="bt"><div class="bf" style="width:'+pct(x[1],tot)+'%"></div></div><div class="bn">'+x[1]+' · '+pct(x[1],tot)+'%</div></div>';}).join("");
+  }
+  function filtered(){
+    var q=$("q").value.trim().toLowerCase(); if(!q) return DATA;
+    return DATA.filter(function(r){ return [r.nome,r.instagram,r.email,r.cidade].join(" ").toLowerCase().indexOf(q)>=0; });
+  }
+  function renderTable(){
+    var rows=filtered();
+    $("count").textContent=rows.length+" de "+DATA.length;
+    $("rows").innerHTML=rows.slice(0,500).map(function(r){
+      var dt=new Date(r.created_at).toLocaleString("pt-BR");
+      var ig=(r.instagram||"").replace(/^@/,"");
+      return '<tr><td>'+esc(r.nome)+'</td><td>'+(r.email?'<a href="mailto:'+esc(r.email)+'">'+esc(r.email)+'</a>':'<span class="muted">—</span>')+'</td>'+
+        '<td>'+(ig?'<a href="https://instagram.com/'+esc(ig)+'" target="_blank" rel="noopener">@'+esc(ig)+'</a>':'—')+'</td>'+
+        '<td>'+esc(r.cidade)+'</td><td><span class="pill">'+esc(r.nicho)+'</span></td><td class="muted">'+esc(r.seguidores)+'</td><td class="muted">'+esc(dt)+'</td></tr>';
+    }).join("")||'<tr><td colspan="7" class="muted" style="padding:20px">Nenhum cadastro.</td></tr>';
+  }
+  function exportCsv(){
+    var rows=filtered(); if(!rows.length){alert("Nada para exportar.");return;}
+    var head=["nome","email","instagram","cidade","nicho","seguidores","data"];
+    var lines=[head.join(";")].concat(rows.map(function(r){
+      return [r.nome,r.email,r.instagram,r.cidade,r.nicho,r.seguidores,new Date(r.created_at).toLocaleString("pt-BR")]
+        .map(function(v){return '"'+String(v==null?"":v).replace(/"/g,'""')+'"';}).join(";");
+    }));
+    var blob=new Blob(["﻿"+lines.join("\r\n")],{type:"text/csv;charset=utf-8"});
+    var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="cadastros-icom-influencia.csv"; a.click();
+  }
+</script>
+</body>
+</html>

@@ -350,6 +350,7 @@
     <form class="form-card reveal" id="signup">
       <div class="form-grid">
         <div class="field full"><label for="f-nome">Nome completo</label><input id="f-nome" name="nome" required placeholder="Seu nome"></div>
+        <div class="field full"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" required placeholder="voce@email.com"></div>
         <div class="field"><label for="f-insta">@ do Instagram</label><input id="f-insta" name="instagram" required placeholder="@seuperfil"></div>
         <div class="field"><label for="f-cidade">Cidade</label><input id="f-cidade" name="cidade" required placeholder="Ex.: Taubaté"></div>
         <div class="field"><label for="f-nicho">Nicho</label><select id="f-nicho" name="nicho" required>
@@ -441,11 +442,11 @@
   var form=document.getElementById("signup");
   form.addEventListener("submit",function(ev){
     ev.preventDefault();
-    var d={ nome:form.nome.value.trim(), instagram:form.instagram.value.trim(), cidade:form.cidade.value.trim(), nicho:form.nicho.value, seguidores:form.seguidores.value };
+    var d={ nome:form.nome.value.trim(), email:form.email.value.trim(), instagram:form.instagram.value.trim(), cidade:form.cidade.value.trim(), nicho:form.nicho.value, seguidores:form.seguidores.value };
     var btn=document.getElementById("signupBtn"); btn.textContent="Enviando...";
-    var msg="Olá! Quero participar da ICOM Influência Compartilhada.\nNome: "+d.nome+"\nInstagram: "+d.instagram+"\nCidade: "+d.cidade+"\nNicho: "+d.nicho+"\nSeguidores: "+d.seguidores;
+    var msg="Olá! Quero participar da ICOM Influência Compartilhada.\nNome: "+d.nome+"\nE-mail: "+d.email+"\nInstagram: "+d.instagram+"\nCidade: "+d.cidade+"\nNicho: "+d.nicho+"\nSeguidores: "+d.seguidores;
     // grava no Supabase (best-effort) e abre o WhatsApp
-    try{ fetch(SUPA_URL+"/rest/v1/icom_influencia_leads",{method:"POST",headers:{"Content-Type":"application/json","apikey":SUPA_ANON,"Authorization":"Bearer "+SUPA_ANON,"Prefer":"return=minimal"},body:JSON.stringify({nome:d.nome,instagram:d.instagram,cidade:d.cidade,nicho:d.nicho,seguidores:d.seguidores,user_agent:navigator.userAgent})}).catch(function(){}); }catch(e){}
+    try{ fetch(SUPA_URL+"/rest/v1/icom_influencia_leads",{method:"POST",headers:{"Content-Type":"application/json","apikey":SUPA_ANON,"Authorization":"Bearer "+SUPA_ANON,"Prefer":"return=minimal"},body:JSON.stringify({nome:d.nome,email:d.email,instagram:d.instagram,cidade:d.cidade,nicho:d.nicho,seguidores:d.seguidores,user_agent:navigator.userAgent})}).catch(function(){}); }catch(e){}
     try{ if(typeof fbq==="function") fbq("trackCustom","CadastroInfluenciador",d); }catch(e){}
     var wa=waLink(msg);
     document.getElementById("formOk").querySelector("a.wa").href=wa;
