@@ -111,7 +111,8 @@
   .flist li svg{width:20px;height:20px;stroke:var(--red);flex-shrink:0;margin-top:2px}
   /* perfis */
   .perfil{text-align:center;padding:26px 18px}
-  .perfil .pic{width:76px;height:76px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:1.5rem;color:#fff}
+  .perfil .pic{width:82px;height:82px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:1.5rem;color:#fff;overflow:hidden}
+  .av .pic img,.perfil .pic img{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
   .perfil h3{font-size:1.12rem;margin-bottom:3px} .perfil .nicho{color:var(--blue);font-size:.9rem;font-weight:600} .perfil .cidade{color:var(--mut);font-size:.86rem;margin-top:3px}
   /* form */
   .form-sec{background:linear-gradient(180deg,var(--bg),var(--bg2))}
@@ -206,10 +207,10 @@
       </div>
     </div>
     <div class="avatars reveal">
-      <div class="av av1"><div class="pic">A</div><div class="fol">12 mil</div><div class="lbl">seguidores · Moda</div></div>
-      <div class="av r av2"><div class="pic">L</div><div class="fol">18 mil</div><div class="lbl">seguidores · Humor</div></div>
-      <div class="av g av3"><div class="pic">C</div><div class="fol">27 mil</div><div class="lbl">seguidores · Gastronomia</div></div>
-      <div class="av p av4"><div class="pic">R</div><div class="fol">42 mil</div><div class="lbl">seguidores · Automotivo</div></div>
+      <div class="av av1"><div class="pic"><img src="fotos/hero-a.jpg" alt="Criadora de moda"></div><div class="fol">12 mil</div><div class="lbl">seguidores · Moda</div></div>
+      <div class="av r av2"><div class="pic"><img src="fotos/hero-l.jpg" alt="Criador de humor"></div><div class="fol">18 mil</div><div class="lbl">seguidores · Humor</div></div>
+      <div class="av g av3"><div class="pic"><img src="fotos/hero-c.jpg" alt="Criadora de gastronomia"></div><div class="fol">27 mil</div><div class="lbl">seguidores · Gastronomia</div></div>
+      <div class="av p av4"><div class="pic"><img src="fotos/hero-r.jpg" alt="Criador automotivo"></div><div class="fol">42 mil</div><div class="lbl">seguidores · Automotivo</div></div>
     </div>
   </div>
 </section>
@@ -317,10 +318,10 @@
     <h2 class="title reveal">Como seu perfil pode aparecer.</h2>
     <p class="lead reveal" style="margin-bottom:34px">Exemplos ilustrativos de como os participantes podem ser apresentados dentro da rede e das campanhas.</p>
     <div class="cards g3 perfis">
-      <div class="card perfil reveal"><div class="pic" style="background:linear-gradient(135deg,#2f6bff,#0a1533)">AS</div><h3>Ana Souza</h3><div class="nicho">Moda e lifestyle</div><div class="cidade">Taubaté</div></div>
-      <div class="card perfil reveal"><div class="pic" style="background:linear-gradient(135deg,#ff5a6a,#e01e30)">LM</div><h3>Lucas Mendes</h3><div class="nicho">Humor e entretenimento</div><div class="cidade">São José dos Campos</div></div>
-      <div class="card perfil reveal"><div class="pic" style="background:linear-gradient(135deg,#3ad0a0,#12806a)">CR</div><h3>Carla Ribeiro</h3><div class="nicho">Família e gastronomia</div><div class="cidade">Pindamonhangaba</div></div>
-      <div class="card perfil reveal"><div class="pic" style="background:linear-gradient(135deg,#9b6bff,#4a2bb7)">RC</div><h3>Rafael Costa</h3><div class="nicho">Automotivo e negócios</div><div class="cidade">Caçapava</div></div>
+      <div class="card perfil reveal"><div class="pic"><img src="fotos/ana.jpg" alt="Ana Souza" loading="lazy"></div><h3>Ana Souza</h3><div class="nicho">Moda e lifestyle</div><div class="cidade">Taubaté</div></div>
+      <div class="card perfil reveal"><div class="pic"><img src="fotos/lucas.jpg" alt="Lucas Mendes" loading="lazy"></div><h3>Lucas Mendes</h3><div class="nicho">Humor e entretenimento</div><div class="cidade">São José dos Campos</div></div>
+      <div class="card perfil reveal"><div class="pic"><img src="fotos/carla.jpg" alt="Carla Ribeiro" loading="lazy"></div><h3>Carla Ribeiro</h3><div class="nicho">Família e gastronomia</div><div class="cidade">Pindamonhangaba</div></div>
+      <div class="card perfil reveal"><div class="pic"><img src="fotos/rafael.jpg" alt="Rafael Costa" loading="lazy"></div><h3>Rafael Costa</h3><div class="nicho">Automotivo e negócios</div><div class="cidade">Caçapava</div></div>
     </div>
     <p class="form-note reveal" style="margin-top:16px">Nomes e perfis ilustrativos — serão substituídos pelos participantes reais.</p>
   </div>
