@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICOM · Influência Compartilhada — Seu próximo nível começa aqui</title>
+<meta name="description" content="A ICOM conecta nano e microinfluenciadores do Vale do Paraíba a empresas, produtos e campanhas reais. Divulgue, venda, ganhe comissão e cresça com a rede.">
+<meta name="theme-color" content="#080b16">
+<meta property="og:title" content="ICOM · Influência Compartilhada">
+<meta property="og:description" content="A rede que conecta nano e microinfluenciadores a empresas, produtos e campanhas reais no Vale do Paraíba.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23080b16'/><text x='16' y='22' font-family='Arial' font-weight='bold' font-size='15' fill='%232f6bff' text-anchor='middle'>iC</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#080b16; --bg2:#0b1120; --panel:#0f1728; --panel2:#131d33; --line:#1e2b47;
+    --blue:#2f6bff; --blue-2:#1746d4; --blue-soft:rgba(47,107,255,.14); --navy:#0a1533;
+    --red:#ff3547; --red-2:#e01e30; --red-soft:rgba(255,53,71,.14);
+    --txt:#eef2fb; --mut:#93a3c4; --white:#fff;
+    --radius:18px; --wrap:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:76px}
+  body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,.font-h{font-family:'Sora','Inter',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.08}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+  section{padding:76px 0;position:relative}
+  .eyebrow{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--red)}
+  h2.title{font-size:clamp(1.9rem,4.6vw,3rem);margin-bottom:14px}
+  .lead{color:var(--mut);font-size:clamp(1.02rem,2vw,1.18rem);max-width:62ch}
+  .hl{color:var(--blue)}
+  .accent{color:var(--red)}
+  /* botões */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Inter';font-weight:700;font-size:1rem;border:0;border-radius:999px;padding:15px 26px;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+  .btn svg{width:19px;height:19px;flex-shrink:0}
+  .btn-red{background:var(--red);color:#fff;box-shadow:0 14px 30px -12px rgba(255,53,71,.6)}
+  .btn-red:hover{transform:translateY(-2px);box-shadow:0 18px 38px -12px rgba(255,53,71,.75)}
+  .btn-blue{background:var(--blue);color:#fff;box-shadow:0 14px 30px -12px rgba(47,107,255,.6)}
+  .btn-blue:hover{transform:translateY(-2px)}
+  .btn-ghost{background:rgba(255,255,255,.05);color:var(--txt);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--blue);background:var(--blue-soft)}
+  /* header */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .25s,border-color .25s}
+  header.scrolled{background:rgba(8,11,22,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{display:flex;align-items:center;gap:11px}
+  .logo .mark{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,var(--blue),var(--navy));display:grid;place-items:center;font-family:'Sora';font-weight:800;color:#fff;font-size:17px;border:1px solid rgba(255,255,255,.12)}
+  .logo b{font-family:'Sora';font-weight:800;font-size:19px;letter-spacing:.02em;display:block;line-height:1}
+  .logo span{font-size:11px;color:var(--mut);letter-spacing:.14em;text-transform:uppercase}
+  .menu{display:flex;align-items:center;gap:28px}
+  .menu a{font-size:14.5px;color:var(--mut);font-weight:600;transition:color .15s}
+  .menu a:hover{color:var(--txt)}
+  .nav-cta{display:inline-flex}
+  .burger{display:none;background:none;border:0;color:var(--txt);cursor:pointer;padding:8px}
+  .burger svg{width:26px;height:26px}
+  .mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(8,11,22,.98);backdrop-filter:blur(6px);display:none;flex-direction:column;align-items:center;justify-content:center;gap:26px}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{font-family:'Sora';font-weight:700;font-size:1.5rem}
+  .mobile-menu .close{position:absolute;top:20px;right:20px;background:none;border:0;color:var(--txt);font-size:34px;cursor:pointer}
+  /* hero */
+  .hero{padding-top:120px;padding-bottom:60px;background:radial-gradient(1100px 520px at 78% -8%,rgba(47,107,255,.22),transparent 60%),radial-gradient(700px 400px at 6% 12%,rgba(255,53,71,.10),transparent 55%),var(--bg)}
+  .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(2.3rem,6.2vw,4rem);margin-bottom:16px}
+  .hero .sub{font-size:clamp(1.08rem,2.3vw,1.4rem);color:var(--txt);margin-bottom:12px;font-weight:500}
+  .hero .support{color:var(--mut);font-size:1.05rem;margin-bottom:28px;max-width:52ch}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+  .stats{display:flex;gap:26px;flex-wrap:wrap}
+  .stat strong{display:block;font-family:'Sora';font-weight:800;font-size:1.9rem;color:#fff;line-height:1}
+  .stat span{font-size:12.5px;color:var(--mut);margin-top:6px;display:block;max-width:15ch}
+  /* hero avatars */
+  .avatars{position:relative;min-height:400px}
+  .av{position:absolute;border-radius:20px;padding:16px;background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);box-shadow:0 24px 50px -20px rgba(0,0,0,.7);width:186px}
+  .av .pic{width:100%;aspect-ratio:1;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--navy));display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:2rem;color:rgba(255,255,255,.92);margin-bottom:11px}
+  .av.r .pic{background:linear-gradient(135deg,#ff5a6a,var(--red-2))}
+  .av.g .pic{background:linear-gradient(135deg,#3ad0a0,#12806a)}
+  .av.p .pic{background:linear-gradient(135deg,#9b6bff,#4a2bb7)}
+  .av .fol{font-family:'Sora';font-weight:800;font-size:1.05rem;color:#fff}
+  .av .lbl{font-size:11.5px;color:var(--mut)}
+  .av1{top:0;left:2%;transform:rotate(-4deg)} .av2{top:24px;right:0;transform:rotate(4deg)}
+  .av3{bottom:8px;left:0;transform:rotate(3deg)} .av4{bottom:32px;right:6%;transform:rotate(-3deg)}
+  /* cards / grids */
+  .cards{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:linear-gradient(165deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:transform .2s,border-color .2s}
+  .card:hover{transform:translateY(-5px);border-color:var(--blue)}
+  .card .ic{width:48px;height:48px;border-radius:13px;background:var(--blue-soft);display:grid;place-items:center;margin-bottom:16px}
+  .card .ic svg{width:24px;height:24px;stroke:var(--blue)}
+  .card .ic.red{background:var(--red-soft)} .card .ic.red svg{stroke:var(--red)}
+  .card h3{font-size:1.22rem;margin-bottom:8px}
+  .card p{color:var(--mut);font-size:.98rem}
+  .card .num{font-family:'Sora';font-weight:800;color:var(--blue);font-size:1.1rem;margin-bottom:10px}
+  /* alt panel */
+  .alt{background:var(--bg2)}
+  .quote{margin-top:26px;border-left:3px solid var(--red);padding:14px 0 14px 22px;font-family:'Sora';font-weight:700;font-size:clamp(1.15rem,2.6vw,1.6rem);color:#fff;max-width:46ch}
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;counter-reset:st}
+  .step{background:linear-gradient(165deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:16px;padding:22px 18px;position:relative}
+  .step .n{width:38px;height:38px;border-radius:10px;background:var(--blue);color:#fff;font-family:'Sora';font-weight:800;display:grid;place-items:center;margin-bottom:14px}
+  .step h3{font-size:1.08rem;margin-bottom:6px} .step p{color:var(--mut);font-size:.9rem}
+  /* tags */
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .tag{padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--txt);font-weight:600;font-size:.92rem;transition:.15s}
+  .tag:hover{border-color:var(--blue);color:var(--blue)}
+  /* list */
+  .flist{display:grid;grid-template-columns:1fr 1fr;gap:12px 26px;margin-top:8px}
+  .flist li{list-style:none;display:flex;gap:11px;align-items:flex-start;color:var(--txt);font-size:1rem}
+  .flist li svg{width:20px;height:20px;stroke:var(--red);flex-shrink:0;margin-top:2px}
+  /* perfis */
+  .perfil{text-align:center;padding:26px 18px}
+  .perfil .pic{width:76px;height:76px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:1.5rem;color:#fff}
+  .perfil h3{font-size:1.12rem;margin-bottom:3px} .perfil .nicho{color:var(--blue);font-size:.9rem;font-weight:600} .perfil .cidade{color:var(--mut);font-size:.86rem;margin-top:3px}
+  /* form */
+  .form-sec{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+  .form-card{background:linear-gradient(165deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:24px;padding:34px;max-width:640px;margin:26px auto 0;box-shadow:0 30px 70px -30px rgba(0,0,0,.8)}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field{display:flex;flex-direction:column;gap:7px}
+  .field.full{grid-column:1/-1}
+  .field label{font-size:12.5px;color:var(--mut);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  .field input,.field select{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:13px 14px;color:var(--txt);font-family:inherit;font-size:1rem}
+  .field input:focus,.field select:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 4px var(--blue-soft)}
+  .form-note{color:var(--mut);font-size:.82rem;text-align:center;margin-top:14px}
+  .form-ok{display:none;text-align:center;padding:20px}
+  .form-ok.show{display:block}
+  .form-ok .big{font-family:'Sora';font-weight:800;font-size:1.5rem;margin-bottom:8px;color:#fff}
+  /* final cta */
+  .final{background:radial-gradient(900px 420px at 50% 0%,rgba(47,107,255,.25),transparent 60%),var(--bg);text-align:center}
+  .final h2{font-size:clamp(2rem,5vw,3.2rem);max-width:16ch;margin:0 auto 16px}
+  .final p{color:var(--mut);max-width:56ch;margin:0 auto 28px;font-size:1.1rem}
+  /* footer */
+  footer{background:var(--bg2);border-top:1px solid var(--line);padding:48px 0 34px}
+  .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .foot .flinks{display:flex;flex-wrap:wrap;gap:14px 26px}
+  .foot a{color:var(--mut);font-size:.94rem} .foot a:hover{color:var(--txt)}
+  .foot .loc{color:var(--mut);font-size:.9rem;margin-top:8px}
+  .copy{color:var(--mut);font-size:.82rem;margin-top:28px;border-top:1px solid var(--line);padding-top:20px}
+  /* float whats */
+  .float-wa{position:fixed;right:18px;bottom:18px;z-index:90;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.7)}
+  .float-wa svg{width:30px;height:30px;fill:#fff}
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (max-width:900px){
+    .menu{display:none} .nav-cta{display:none} .burger{display:block}
+    .hero-grid{grid-template-columns:1fr;gap:36px} .avatars{min-height:340px;max-width:420px;margin:0 auto}
+    .g3,.g2,.steps{grid-template-columns:1fr} .steps{gap:12px}
+    .flist{grid-template-columns:1fr} .form-grid{grid-template-columns:1fr}
+    .perfis.cards{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:480px){ .perfis.cards{grid-template-columns:1fr} .stat strong{font-size:1.6rem} }
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none} html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="logo">
+      <span class="mark">iC</span>
+      <span><b>ICOM</b><span>Influência Compartilhada</span></span>
+    </a>
+    <nav class="menu">
+      <a href="#projeto">O Projeto</a>
+      <a href="#como">Como Funciona</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#rede">A Rede</a>
+      <a href="#cadastro">Quero Participar</a>
+    </nav>
+    <a href="#cadastro" class="btn btn-red nav-cta" style="padding:11px 20px;font-size:.92rem">Quero participar</a>
+    <button class="burger" id="burger" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close" id="mmClose" aria-label="Fechar">&times;</button>
+  <a href="#projeto">O Projeto</a>
+  <a href="#como">Como Funciona</a>
+  <a href="#beneficios">Benefícios</a>
+  <a href="#rede">A Rede</a>
+  <a href="#cadastro">Quero Participar</a>
+</div>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow reveal">Rede de influência · Vale do Paraíba</div>
+      <h1 class="reveal">Seu próximo nível <span class="hl">começa aqui.</span></h1>
+      <p class="sub reveal">A ICOM conecta nano e microinfluenciadores a empresas, produtos e campanhas reais.</p>
+      <p class="support reveal">Você divulga, vende, ganha comissão e cresce junto com toda a rede.</p>
+      <div class="hero-ctas reveal">
+        <a class="btn btn-red wa" data-msg="Olá! Quero ser afiliado da ICOM Influência Compartilhada e entrar na rede de influenciadores." href="#">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91S17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.4-4.3-1.17l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23z"/></svg>
+          Quero ser um afiliado
+        </a>
+        <a class="btn btn-ghost" href="#projeto">Entender o projeto</a>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><strong data-count="50" data-suffix="+">0</strong><span>influenciadores conectados</span></div>
+        <div class="stat"><strong data-count="50" data-suffix="+">0</strong><span>empresas e produtos</span></div>
+        <div class="stat"><strong>5% a 30%</strong><span>de comissão por venda</span></div>
+      </div>
+    </div>
+    <div class="avatars reveal">
+      <div class="av av1"><div class="pic">A</div><div class="fol">12 mil</div><div class="lbl">seguidores · Moda</div></div>
+      <div class="av r av2"><div class="pic">L</div><div class="fol">18 mil</div><div class="lbl">seguidores · Humor</div></div>
+      <div class="av g av3"><div class="pic">C</div><div class="fol">27 mil</div><div class="lbl">seguidores · Gastronomia</div></div>
+      <div class="av p av4"><div class="pic">R</div><div class="fol">42 mil</div><div class="lbl">seguidores · Automotivo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S2 POR QUE EXISTE -->
+<section class="alt" id="projeto">
+  <div class="wrap">
+    <div class="eyebrow reveal">O Projeto</div>
+    <h2 class="title reveal">Por que a ICOM existe?</h2>
+    <p class="lead reveal">Muitos criadores têm audiência e conteúdo, mas ainda encontram dificuldade para chegar até empresas, produtos, publis e patrocinadores. Ao mesmo tempo, empresas precisam de divulgação local com verdade, proximidade e resultado.</p>
+    <p class="quote reveal">A ICOM aproxima quem quer crescer influenciando de quem precisa vender e construir marca.</p>
+  </div>
+</section>
+
+<!-- S3 DE NANO PARA MICRO -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">Crescimento</div>
+    <h2 class="title reveal">De nano para microinfluenciador.</h2>
+    <p class="lead reveal" style="margin-bottom:34px">O próximo nível não acontece apenas pelo número de seguidores. Ele acontece quando o perfil ganha recorrência, autoridade, presença em campanhas e relacionamento com empresas.</p>
+    <div class="cards g3">
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div><h3>Mais alcance</h3><p>Seu conteúdo aparece em campanhas, perfis de empresas e ações compartilhadas.</p></div>
+      <div class="card reveal"><div class="ic red"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"/></svg></div><h3>Mais autoridade</h3><p>Você constrói portfólio com marcas reais e aumenta sua credibilidade.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><h3>Mais oportunidades</h3><p>Uma parceria pode abrir caminho para muitas outras dentro da rede.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 COMO FUNCIONA -->
+<section class="alt" id="como">
+  <div class="wrap">
+    <div class="eyebrow reveal">Como Funciona</div>
+    <h2 class="title reveal">Simples, contínuo e sem amarras.</h2>
+    <p class="lead reveal" style="margin-bottom:34px">Você não fica preso a uma única empresa. A proposta é ter acesso contínuo a diferentes produtos, campanhas e oportunidades.</p>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h3>Entre</h3><p>Cadastre seu perfil e faça parte da rede regional.</p></div>
+      <div class="step reveal"><div class="n">2</div><h3>Escolha</h3><p>Veja as campanhas e selecione as que combinam com você.</p></div>
+      <div class="step reveal"><div class="n">3</div><h3>Crie</h3><p>Produza stories, reels, posts, reviews e lives.</p></div>
+      <div class="step reveal"><div class="n">4</div><h3>Venda</h3><p>Seu público compra pelo seu link, cupom ou indicação.</p></div>
+      <div class="step reveal"><div class="n">5</div><h3>Cresça</h3><p>Receba comissão e aumente seu portfólio e visibilidade.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 BENEFÍCIOS -->
+<section id="beneficios">
+  <div class="wrap">
+    <div class="eyebrow reveal">Benefícios</div>
+    <h2 class="title reveal">Você ganha muito mais do que comissão.</h2>
+    <p class="lead reveal" style="margin-bottom:34px">A remuneração pode variar de <b class="hl">5% a 30%</b>, conforme o produto e a empresa. Mas o maior valor está no crescimento que a rede gera ao longo do tempo.</p>
+    <div class="cards g3">
+      <div class="card reveal"><div class="num">01</div><h3>Comissões por venda</h3><p>Ganhos proporcionais ao resultado gerado em cada campanha.</p></div>
+      <div class="card reveal"><div class="num">02</div><h3>Produtos e experiências</h3><p>Receba produtos, teste serviços e participe de lançamentos.</p></div>
+      <div class="card reveal"><div class="num">03</div><h3>Portfólio profissional</h3><p>Mais marcas associadas ao seu nome e mais material para apresentar.</p></div>
+      <div class="card reveal"><div class="num">04</div><h3>Crescimento de audiência</h3><p>Compartilhamentos cruzados entre criadores, empresas e campanhas.</p></div>
+      <div class="card reveal"><div class="num">05</div><h3>Networking regional</h3><p>Contato direto com empresários, gestores e outros influenciadores.</p></div>
+      <div class="card reveal"><div class="num">06</div><h3>Treinamento e suporte</h3><p>Orientações para conteúdo, posicionamento, vendas e performance.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 ECOSSISTEMA -->
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">Ecossistema</div>
+    <h2 class="title reveal">Você não divulga uma empresa.<br>Você entra em um ecossistema.</h2>
+    <p class="lead reveal">Hoje você pode divulgar um restaurante. Amanhã, uma loja de roupas. Depois, um produto de beleza, um serviço automotivo ou um evento. Quanto mais campanhas, maior o seu repertório, sua exposição e sua chance de gerar renda.</p>
+    <p class="quote reveal">Seu perfil passa a ser visto por dezenas de empresas — e cada campanha pode ser a porta de entrada para a próxima.</p>
+  </div>
+</section>
+
+<!-- S7 QUEM PODE PARTICIPAR -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">Perfil</div>
+    <h2 class="title reveal">Quem pode participar?</h2>
+    <p class="lead reveal" style="margin-bottom:8px">Criadores regionais com audiência real, vontade de crescer, compromisso com entrega e capacidade de comunicar com verdade.</p>
+    <div class="tags reveal">
+      <span class="tag">Lifestyle</span><span class="tag">Moda</span><span class="tag">Beleza</span><span class="tag">Humor</span><span class="tag">Família</span><span class="tag">Fitness</span><span class="tag">Gastronomia</span><span class="tag">Automotivo</span><span class="tag">Negócios</span><span class="tag">Viagens</span><span class="tag">Maternidade</span><span class="tag">Conteúdo local</span>
+    </div>
+  </div>
+</section>
+
+<!-- S8 A REDE -->
+<section class="alt" id="rede">
+  <div class="wrap">
+    <div class="eyebrow reveal">A Rede</div>
+    <h2 class="title reveal">Uma rede que multiplica sua presença.</h2>
+    <p class="lead reveal">Cada empresa participante também ajuda a movimentar a campanha em suas próprias redes. Isso amplia a exposição dos criadores e fortalece a divulgação de todos.</p>
+    <ul class="flist reveal">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Publicações compartilhadas por empresas</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Campanhas em várias cidades do Vale</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Lives conjuntas com marcas e criadores</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Conteúdos colaborativos entre influenciadores</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Ações presenciais e lançamentos</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Premiação e reconhecimento por performance</li>
+    </ul>
+  </div>
+</section>
+
+<!-- S9 PERFIS SIMULADOS -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">Exemplos</div>
+    <h2 class="title reveal">Como seu perfil pode aparecer.</h2>
+    <p class="lead reveal" style="margin-bottom:34px">Exemplos ilustrativos de como os participantes podem ser apresentados dentro da rede e das campanhas.</p>
+    <div class="cards g3 perfis">
+      <div class="card perfil reveal"><div class="pic" style="background:linear-gradient(135deg,#2f6bff,#0a1533)">AS</div><h3>Ana Souza</h3><div class="nicho">Moda e lifestyle</div><div class="cidade">Taubaté</div></div>
+      <div class="card perfil reveal"><div class="pic" style="background:linear-gradient(135deg,#ff5a6a,#e01e30)">LM</div><h3>Lucas Mendes</h3><div class="nicho">Humor e entretenimento</div><div class="cidade">São José dos Campos</div></div>
+      <div class="card perfil reveal"><div class="pic" style="background:linear-gradient(135deg,#3ad0a0,#12806a)">CR</div><h3>Carla Ribeiro</h3><div class="nicho">Família e gastronomia</div><div class="cidade">Pindamonhangaba</div></div>
+      <div class="card perfil reveal"><div class="pic" style="background:linear-gradient(135deg,#9b6bff,#4a2bb7)">RC</div><h3>Rafael Costa</h3><div class="nicho">Automotivo e negócios</div><div class="cidade">Caçapava</div></div>
+    </div>
+    <p class="form-note reveal" style="margin-top:16px">Nomes e perfis ilustrativos — serão substituídos pelos participantes reais.</p>
+  </div>
+</section>
+
+<!-- S10 CONTEÚDO/LIVES/EVENTOS -->
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">Ambiente</div>
+    <h2 class="title reveal">Conteúdo, lives, eventos e treinamento.</h2>
+    <p class="lead reveal" style="margin-bottom:34px">A ICOM cria ambientes de aprendizado e conexão para transformar influência em profissão e relacionamento em resultado.</p>
+    <div class="cards g3">
+      <div class="card reveal"><div class="ic red"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><h3>Lives comerciais</h3><p>Apresentações de produtos, lançamentos, entrevistas e demonstrações.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 4 2 10l10 6 10-6z"/><path d="M6 12v5c0 1 3 2 6 2s6-1 6-2v-5"/></svg></div><h3>Treinamentos</h3><p>Posicionamento, roteiro, vendas, métricas e negociação.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Encontros presenciais</h3><p>Networking entre criadores, empresários e parceiros da região.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CADASTRO -->
+<section class="form-sec" id="cadastro">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="justify-content:center">Quero Participar</div>
+    <h2 class="title reveal" style="text-align:center">Faça parte da rede.</h2>
+    <p class="lead reveal" style="text-align:center;margin:0 auto">Preencha seus dados — a equipe entra em contato pelo WhatsApp com as próximas campanhas.</p>
+    <form class="form-card reveal" id="signup">
+      <div class="form-grid">
+        <div class="field full"><label for="f-nome">Nome completo</label><input id="f-nome" name="nome" required placeholder="Seu nome"></div>
+        <div class="field"><label for="f-insta">@ do Instagram</label><input id="f-insta" name="instagram" required placeholder="@seuperfil"></div>
+        <div class="field"><label for="f-cidade">Cidade</label><input id="f-cidade" name="cidade" required placeholder="Ex.: Taubaté"></div>
+        <div class="field"><label for="f-nicho">Nicho</label><select id="f-nicho" name="nicho" required>
+          <option value="" disabled selected>Selecione</option>
+          <option>Lifestyle</option><option>Moda</option><option>Beleza</option><option>Humor</option><option>Família</option><option>Fitness</option><option>Gastronomia</option><option>Automotivo</option><option>Negócios</option><option>Viagens</option><option>Maternidade</option><option>Conteúdo local</option>
+        </select></div>
+        <div class="field"><label for="f-seg">Seguidores</label><select id="f-seg" name="seguidores" required>
+          <option value="" disabled selected>Selecione</option>
+          <option>Até 5 mil</option><option>5 mil a 15 mil</option><option>15 mil a 30 mil</option><option>30 mil a 60 mil</option><option>Acima de 60 mil</option>
+        </select></div>
+      </div>
+      <button type="submit" class="btn btn-red" id="signupBtn" style="width:100%;margin-top:18px">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91S17.5 2 12.04 2z"/></svg>
+        Quero fazer parte
+      </button>
+      <p class="form-note">Ao enviar, você abre o WhatsApp com seus dados pré-preenchidos.</p>
+    </form>
+    <div class="form-ok" id="formOk">
+      <div class="big">Recebemos seu cadastro! 🎉</div>
+      <p class="lead" style="margin:0 auto 18px">Estamos te levando pro WhatsApp da ICOM pra concluir. Se não abrir, toque no botão.</p>
+      <a class="btn btn-red wa" data-msg="Olá! Acabei de me cadastrar na ICOM Influência Compartilhada e quero participar da rede." href="#">Abrir WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="justify-content:center">O próximo nível</div>
+    <h2 class="reveal">O seu próximo nível pode começar dentro da ICOM.</h2>
+    <p class="reveal">Entre para a rede de Influência Compartilhada e tenha acesso a empresas, produtos, campanhas, aprendizado, comissão e novas conexões.</p>
+    <a class="btn btn-red wa reveal" data-msg="Olá! Quero conhecer melhor a ICOM Influência Compartilhada e saber como participar da rede de influenciadores." href="#" style="font-size:1.1rem;padding:17px 34px">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91S17.5 2 12.04 2z"/></svg>
+      Quero fazer parte
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#top" class="logo"><span class="mark">iC</span><span><b>ICOM</b><span>Influência Compartilhada</span></span></a>
+        <div class="loc">Vale do Paraíba — São Paulo</div>
+      </div>
+      <div class="flinks">
+        <a href="#projeto">Influenciadores</a><a href="#rede">Empresas</a><a href="#como">Como Funciona</a><a href="#beneficios">Benefícios</a><a href="#cadastro">Contato</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        <a class="wa" data-msg="Olá! Quero conhecer melhor a ICOM Influência Compartilhada." href="#">WhatsApp</a>
+      </div>
+    </div>
+    <div class="copy">© ICOM · Influência Compartilhada — Vale do Paraíba. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<a class="float-wa wa" data-msg="Olá! Quero conhecer melhor a ICOM Influência Compartilhada e saber como participar." href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91S17.5 2 12.04 2zm5.49 14.13c-.23.65-1.35 1.24-1.85 1.28-.5.05-.95.24-3.2-.67-2.7-1.06-4.4-3.86-4.53-4.04-.13-.18-1.09-1.45-1.09-2.76s.69-1.96.94-2.23c.25-.27.54-.34.72-.34l.52.01c.17.01.39-.06.61.47.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.09.18-.14.29-.27.45l-.4.47c-.13.13-.27.28-.12.54.15.27.66 1.09 1.42 1.76.97.87 1.79 1.13 2.05 1.26.26.13.41.11.56-.07.15-.18.65-.75.82-1.01.17-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.43.2.5.31.06.11.06.64-.17 1.29z"/></svg></a>
+
+<script>
+  var WA_NUMBER = "551231996370";
+  var SUPA_URL = "https://swsfwthjxtqtkloexyjs.supabase.co";
+  var SUPA_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN3c2Z3dGhqeHRxdGtsb2V4eWpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNzkxOTMsImV4cCI6MjA5Mzc1NTE5M30.09EL5hjdfzK-THVcnakg1nCSAeDMC99gSNUCumku3_4";
+  function waLink(msg){ return "https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg||"Olá! Quero saber mais sobre a ICOM Influência Compartilhada."); }
+  // liga todos os botões .wa
+  document.querySelectorAll("a.wa").forEach(function(a){ a.href = waLink(a.getAttribute("data-msg")); a.target="_blank"; a.rel="noopener"; });
+
+  // header scrolled
+  var hdr=document.getElementById("hdr");
+  addEventListener("scroll",function(){ hdr.classList.toggle("scrolled", scrollY>20); });
+
+  // menu mobile
+  var mm=document.getElementById("mobileMenu");
+  document.getElementById("burger").addEventListener("click",function(){ mm.classList.add("open"); });
+  document.getElementById("mmClose").addEventListener("click",function(){ mm.classList.remove("open"); });
+  mm.querySelectorAll("a").forEach(function(a){ a.addEventListener("click",function(){ mm.classList.remove("open"); }); });
+
+  // reveal on scroll
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); },{threshold:.14});
+  document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+
+  // contadores
+  function animate(el){ var t=+el.dataset.count, sfx=el.dataset.suffix||"", s=performance.now(), d=1100;
+    function f(n){ var p=Math.min((n-s)/d,1); el.textContent=Math.round(p*t)+sfx; if(p<1) requestAnimationFrame(f); } requestAnimationFrame(f); }
+  var cio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ animate(e.target); cio.unobserve(e.target); } }); },{threshold:.5});
+  document.querySelectorAll("[data-count]").forEach(function(el){ cio.observe(el); });
+
+  // formulário
+  var form=document.getElementById("signup");
+  form.addEventListener("submit",function(ev){
+    ev.preventDefault();
+    var d={ nome:form.nome.value.trim(), instagram:form.instagram.value.trim(), cidade:form.cidade.value.trim(), nicho:form.nicho.value, seguidores:form.seguidores.value };
+    var btn=document.getElementById("signupBtn"); btn.textContent="Enviando...";
+    var msg="Olá! Quero participar da ICOM Influência Compartilhada.\nNome: "+d.nome+"\nInstagram: "+d.instagram+"\nCidade: "+d.cidade+"\nNicho: "+d.nicho+"\nSeguidores: "+d.seguidores;
+    // grava no Supabase (best-effort) e abre o WhatsApp
+    try{ fetch(SUPA_URL+"/rest/v1/icom_influencia_leads",{method:"POST",headers:{"Content-Type":"application/json","apikey":SUPA_ANON,"Authorization":"Bearer "+SUPA_ANON,"Prefer":"return=minimal"},body:JSON.stringify({nome:d.nome,instagram:d.instagram,cidade:d.cidade,nicho:d.nicho,seguidores:d.seguidores,user_agent:navigator.userAgent})}).catch(function(){}); }catch(e){}
+    try{ if(typeof fbq==="function") fbq("trackCustom","CadastroInfluenciador",d); }catch(e){}
+    var wa=waLink(msg);
+    document.getElementById("formOk").querySelector("a.wa").href=wa;
+    form.style.display="none"; document.getElementById("formOk").classList.add("show");
+    window.open(wa,"_blank");
+  });
+</script>
+</body>
+</html>
